@@ -27,7 +27,14 @@ if (command === "spotify-this-song") {
 //MOVIE THIS
 if (command === "movie-this") {
 	console.log("move-this works");
-	/*var movieName = process.argv[]*/
+	var numOfWordsInMovie = process.argv.length;
+	var movieName = process.argv[3];
+
+	// accept multiple words for song name
+	for(var i = 4; i < numOfWordsInMovie; i++) {
+		movieName = movieName + " " + process.argv[i];
+	}
+
 }
 
 
