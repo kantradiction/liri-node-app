@@ -12,9 +12,14 @@ if (command === "spotify-this-song") {
 }
 
 
-//MOVIETHIS
+//MOVIE THIS
 if (command === "movie-this") {
 	console.log("move-this works");
 }
 
+
+//DO WHAT IT SAYS
+if (command === "do-what-it-says") {
+	console.log("do-what-it-says works");
+}
 //BONUS OUTPUT DATA TO LOG.TXT
