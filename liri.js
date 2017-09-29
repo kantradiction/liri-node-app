@@ -9,12 +9,25 @@ if (command === "my-tweets") {
 //SPOTIFY
 if (command === "spotify-this-song") {
 	console.log("spotify-this-song works");
+	var numOfWordsInSong = process.argv.length;
+	var songName = process.argv[3];
+
+	// accept multiple words for song name
+	for(var i = 4; i < numOfWordsInSong; i++) {
+		songName = songName + " " + process.argv[i];
+	}
+
+	// If no song is provided, default to "The Sign" by Ace of Base
+	if (songName === "") {
+		songName = "The Sign";
+	}
 }
 
 
 //MOVIE THIS
 if (command === "movie-this") {
 	console.log("move-this works");
+	/*var movieName = process.argv[]*/
 }
 
 
