@@ -19,11 +19,12 @@ if (command === "spotify-this-song") {
 	}
 
 	// If no song is provided, default to "The Sign" by Ace of Base
-	if (songName === "") {
+	if (songName === undefined) {
 		songName = "The Sign";
 	}
-}
 
+	console.log(songName);
+}
 
 //MOVIE THIS
 if (command === "movie-this") {
@@ -36,12 +37,19 @@ if (command === "movie-this") {
 		movieName = movieName + " " + process.argv[i];
 	}
 
-}
+	// If no movie is provided, default to "Mr. Nobody."
+	if (movieName === undefined) {
+		movieName = "Mr. Nobody";
+	}
 
+	console.log(movieName);
+
+}
 
 //DO WHAT IT SAYS
 if (command === "do-what-it-says") {
 	console.log("do-what-it-says works");
-	
+
 }
+
 //BONUS OUTPUT DATA TO LOG.TXT
