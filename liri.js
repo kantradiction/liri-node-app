@@ -1,17 +1,46 @@
 //---VARIABLES---
-var keys = require("./keys.js");
+var keys = require("./keys.js"); //twitter and spotify
 var fs = require("fs");
 var command = process.argv[2];
 
 //---FUNCTIONS---
 function tweets() {
 	console.log("my-tweets works");
+	var client = keys.twitterKeys; //get user info from keys
+	var parameters = {
+		q: 'AndrewPresnell',
+		count: 20
+	}
+
+	//Show Previous 20 tweets and when they were created
+	client.get('search/tweets', parameters, searchedData);
+
+	function searchedData(err, data, response) 
+    {
+        var tweets = data.statuses;
+
+        for(var i = 0; i < tweets.length; i++)
+        {
+            //Display when particular tweet was created
+            console.log(tweets[i].created_at);
+
+            //Display Tweet
+            console.log(tweets[i].text);
+
+            //Create a newline so it looks neater
+            console.log("");
+        }
+    } 
 }
 
 function spotify(song) {
 	console.log("spotify-this-song works");
+	//Get song name
 	var numOfWordsInSong = process.argv.length;
+	var artist = "";
 	var songName = song;
+	var previewLink = "";
+	var album = "";
 
 	if (song === undefined) {
 		songName = process.argv[3];
@@ -27,14 +56,23 @@ function spotify(song) {
 		songName = "The Sign";
 	}
 
-	console.log(songName);
+	//show the artist(s), song name, preview link of the song from spotify, the album of the song
+
 }
 
 function movie(movie) {
 	console.log("move-this works");
 	var numOfWordsInMovie = process.argv.length;
-
 	var movieName = movie;
+	var year = "";
+	var IMDBRating = "";
+	var rottenTomatoesRating = "";
+	var country = "";
+	var language = "";
+	var plot = "";
+	var actors = "";
+
+
 	if(movie === undefined) {
 		movieName = process.argv[3];
 	}
