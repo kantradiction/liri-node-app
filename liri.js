@@ -1,4 +1,5 @@
 var keys = require("./keys.js");
+var fs = require("fs");
 var command = process.argv[2];
 
 //MY TWEETS
@@ -41,5 +42,6 @@ if (command === "movie-this") {
 //DO WHAT IT SAYS
 if (command === "do-what-it-says") {
 	console.log("do-what-it-says works");
+	
 }
 //BONUS OUTPUT DATA TO LOG.TXT
