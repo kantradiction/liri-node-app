@@ -1,6 +1,7 @@
 //---VARIABLES---
 var keys = require("./keys"); //twitter and spotify
 var fs = require("fs");
+var request = require("request");
 var command = process.argv[2];
 
 //---FUNCTIONS---
@@ -68,8 +69,6 @@ function spotify(song) {
 		"\n-----------"); 
 	/*console.log(data.tracks.items[0]);*/
 	});
-
-	
 }
 
 function movie(movie) {
@@ -100,6 +99,21 @@ function movie(movie) {
 	}
 
 	console.log(movieName);
+	request('http://www.omdbapi.com/?apikey=40e9cece&t=' + movieName, function(error, response, body) {
+		if (error) {
+			console.log("Error: " + error);
+		}
+		var answer = JSON.parse(body, null, 2);
+		console.log("-----------" + 
+			"\nTitle: " + answer.Title + 
+			"\nYear Released: " + answer.Year + 
+			"\nIMDB Rating: " + answer.Ratings[0].Value + 
+			"\nCountry: " + answer.Country +
+			"\nLanguage: " + answer.Language + 
+			"\nPlot: " + answer.Plot + 
+			"\nActors: " + answer.Actors + 
+			"\n-----------");
+	});
 }
 
 function doWhatItSays() {
