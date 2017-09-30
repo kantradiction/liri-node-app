@@ -30,7 +30,7 @@ function tweets() {
 }
 
 function spotify(song) {
-	console.log("spotify-this-song works");
+	/*console.log("spotify-this-song works");*/
 	//Get song name
 	var numOfWordsInSong = process.argv.length;
 	var artist = "";
@@ -72,7 +72,7 @@ function spotify(song) {
 }
 
 function movie(movie) {
-	console.log("move-this works");
+	/*console.log("move-this works");*/
 	var numOfWordsInMovie = process.argv.length;
 	var movieName = movie;
 	var year = "";
@@ -118,7 +118,7 @@ function movie(movie) {
 
 function doWhatItSays() {
 	var commandArg = "";
-	console.log("do-what-it-says works");
+	/*console.log("do-what-it-says works");*/
 	//retrieve command and command arg from file
 	
 	fs.readFile('random.txt', "utf8", function(error, data) {
