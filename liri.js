@@ -94,7 +94,7 @@ function movie(movie) {
 	}
 
 	// If no movie is provided, default to "Mr. Nobody."
-	if (movieName === undefined) {
+	if (!movieName) {
 		movieName = "Mr. Nobody";
 	}
 
