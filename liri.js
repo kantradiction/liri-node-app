@@ -1,19 +1,15 @@
 //---VARIABLES---
-var keys = require("./keys.js"); //twitter and spotify
+var keys = require("./keys"); //twitter and spotify
 var fs = require("fs");
 var command = process.argv[2];
 
 //---FUNCTIONS---
 function tweets() {
-	console.log("my-tweets works");
 	var client = keys.twitterKeys; //get user info from keys
 	var parameters = {
 		q: 'AndrewPresnell',
 		count: 20
 	}
-
-	//Show Previous 20 tweets and when they were created
-	client.get('search/tweets', parameters, searchedData);
 
 	function searchedData(err, data, response) 
     {
@@ -22,15 +18,14 @@ function tweets() {
         for(var i = 0; i < tweets.length; i++)
         {
             //Display when particular tweet was created
-            console.log(tweets[i].created_at);
-
-            //Display Tweet
-            console.log(tweets[i].text);
-
-            //Create a newline so it looks neater
-            console.log("");
+            console.log("-----------" + 
+            	"\nCreated on: " + tweets[i].created_at + 
+            	"\nTweet: " + tweets[i].text);
         }
-    } 
+    }
+
+    //Show Previous 20 tweets and when they were created
+	client.get('search/tweets', parameters, searchedData); 
 }
 
 function spotify(song) {
@@ -42,22 +37,39 @@ function spotify(song) {
 	var previewLink = "";
 	var album = "";
 
-	if (song === undefined) {
+	if (!song) {
 		songName = process.argv[3];
 	}
-	
+
 	// accept multiple words for song name
 	for(var i = 4; i < numOfWordsInSong; i++) {
 		songName = songName + " " + process.argv[i];
 	}
 
 	// If no song is provided, default to "The Sign" by Ace of Base
-	if (songName === undefined) {
+	if (!songName && !artist) {
 		songName = "The Sign";
+		artist = "The Ace of Base";
 	}
 
 	//show the artist(s), song name, preview link of the song from spotify, the album of the song
+	var client = keys.spotifyKeys;
 
+	client.search({ type: 'track', query: songName + ", " + artist }, function(err, data) {
+		if (err) {
+		    return console.log('Error occurred: ' + err);
+		}
+	 
+	console.log("-----------" + 
+		"\nArtist: " + data.tracks.items[0].artists[0].name + 
+		"\nSong Name: " + data.tracks.items[0].name + 
+		"\nPreview Link: " + data.tracks.items[0].preview_url + 
+		"\nAlbum: " + data.tracks.items[0].album.name + 
+		"\n-----------"); 
+	/*console.log(data.tracks.items[0]);*/
+	});
+
+	
 }
 
 function movie(movie) {

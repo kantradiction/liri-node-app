@@ -1,8 +1,6 @@
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 
-console.log('this is loaded');
-
 var twitterKeys = new Twitter({
   consumer_key: '3k6HcokZPbBlO4bGYnITgTWkR',
   consumer_secret: 'jjQXEyqbwpvJeb1ZT2wAHOa0lBnB8BYYLybFwob9dYAWE7PMvs',
@@ -10,13 +8,13 @@ var twitterKeys = new Twitter({
   access_token_secret: 'c5u7obFM87euJkGRYjJykjDuMa131LcD0dju7rlytp9dE'
 });
 
-/*var spotifyKeys = new Spotify({
-	client_id: '5542f59f69384aa48edd621270d277f5',
-	client_secret: 'e6906014e17d47dc9f960fcad56c769d'
-});*/
+var spotifyKeys = new Spotify({
+	id: '5542f59f69384aa48edd621270d277f5',
+	secret: 'e6906014e17d47dc9f960fcad56c769d'
+});
 
 module.exports = 
 {
-	twitterKeys: twitterKeys
-	/*spotifyKeys: spotifyKeys*/
+	twitterKeys: twitterKeys,
+	spotifyKeys: spotifyKeys
 };
